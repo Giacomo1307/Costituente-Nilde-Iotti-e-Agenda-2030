@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Costituente - Nilde Iotti - Agenda 2030</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, Arial, sans-serif;
+      background: #0b1220;
+      color: #e5e7eb;
+    }
+
+    header {
+      padding: 80px 20px;
+      text-align: center;
+      background: radial-gradient(circle at top, #14532d, #052e16, #020617);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    header p {
+      max-width: 900px;
+      margin: 20px auto 0;
+      font-size: 1.2rem;
+      opacity: 0.85;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(2,6,23,0.9);
+      backdrop-filter: blur(10px);
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 12px;
+      border-bottom: 1px solid #1f2937;
+      z-index: 10;
+    }
+
+    nav a {
+      color: #a7f3d0;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    section {
+      max-width: 1100px;
+      margin: 80px auto;
+      padding: 0 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      border-left: 5px solid #34d399;
+      padding-left: 12px;
+      margin-bottom: 20px;
+    }
+
+    .timeline {
+      position: relative;
+      margin-left: 20px;
+      border-left: 3px solid #34d399;
+    }
+
+    .event {
+      margin: 20px 0;
+      padding: 16px;
+      background: #111827;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .event:hover {
+      transform: translateX(8px);
+      background: #0f172a;
+    }
+
+    .date {
+      color: #34d399;
+      font-weight: bold;
+    }
+
+    .summary {
+      margin-top: 6px;
+      opacity: 0.9;
+    }
+
+    .full {
+      display: none;
+      margin-top: 10px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #111827;
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid #1f2937;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #34d399;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: #14532d;
+      color: #a7f3d0;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+    }
+
+    .hero-img {
+      width: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      border-radius: 18px;
+      margin-top: 20px;
+      border: 1px solid #1f2937;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      background: #020617;
+      border-top: 1px solid #1f2937;
+      margin-top: 80px;
+    }
+
+    .video {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 16px;
+      border: 1px solid #1f2937;
+      margin-top: 20px;
+    }
+
+  /* TIMELINE MODERNA */
+  .modern-timeline {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0;
+    padding: 20px 0;
+    border-top: 2px solid #34d399;
+    border-bottom: 2px solid #34d399;
+    overflow-x: auto;
+    gap: 40px;
+  }
+
+  .t-item {
+    text-align: center;
+    min-width: 120px;
+  }
+
+  .t-circle {
+    width: 70px;
+    height: 70px;
+    background: #14532d;
+    border: 3px solid #34d399;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #a7f3d0;
+    font-weight: bold;
+    margin: 0 auto 10px;
+    font-size: 1rem;
+  }
+
+  .t-text {
+    font-size: 0.9rem;
+    opacity: 0.85;
+  }
+
+  /* PULSANTE ONU */
+  .onu-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #34d399;
+    color: #0b1220;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .onu-button:hover {
+    background: #6ee7b7;
+    transform: translateY(-3px);
+  }
+
+.goal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.goal-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #34d399;
+}
+
+</style>
+
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Costituente - Nilde Iotti - Agenda 2030</h1>
+  <p>
+    Un viaggio immersivo tra la nascita della Repubblica Italiana, il ruolo delle Madri Costituenti
+    e le sfide contemporanee della democrazia digitale.
+  </p>
+</header>
+
+<nav>
+  <a href="#costituente">Costituente</a>
+  <a href="#iotti">Nilde Iotti</a>
+  <a href="#agenda">Agenda 2030</a>
+</nav>
+
+<section id="costituente">
+  <h2>Assemblea Costituente</h2>
+
+  <p>
+    L’Assemblea Costituente nasce in un momento cruciale della storia italiana dopo la caduta del fascismo e la fine della Seconda guerra mondiale.
+    Il referendum del 2 giugno 1946 segna il passaggio decisivo alla Repubblica e al suffragio universale.
+  </p>
+
+  <img class="hero-img" src="Foto%20edu/assemblea%20costituente.jpg" alt="Assemblea Costituente">
+
+  <div class="timeline">
+
+    <div class="event" onclick="toggle(this)">
+      <div class="date">2 giugno 1946</div>
+      <div class="summary">Referendum istituzionale e nascita della Repubblica</div>
+      <div class="full">
+        Gli italiani votarono al referendum istituzionale per scegliere tra Monarchia e Repubblica e per la prima volta votarono anche le donne. Vinse la Repubblica con 12.717.923 voti contro 10.719.284 per la Monarchia, con oltre 1,5 milioni di schede nulle.
+        Lo stesso giorno si elesse l’Assemblea Costituente, incaricata di scrivere la nuova Costituzione. Per la prima volta votarono anche le donne e l’affluenza fu dell’89,1%.
+        Il risultato segnò la fine della monarchia sabauda. Re Umberto II, salito al trono il 9 maggio dopo l’abdicazione di Vittorio Emanuele III, contestò l’esito e partì per l’esilio il 13 giugno. Il 18 giugno 1946 la Corte di Cassazione proclamò ufficialmente la nascita della Repubblica Italiana.
+      </div>
+    </div>
+
+    <div class="event" onclick="toggle(this)">
+      <div class="date">25 giugno 1946</div>
+      <div class="summary">Prima seduta dell’Assemblea Costituente</div>
+      <div class="full">
+        A Palazzo Montecitorio, si riunì per la prima volta l’Assemblea Costituente eletta il 2 giugno. 
+        Il discorso inaugurale fu tenuto da Vittorio Emanuele Orlando. Seguì l’intervento di De Gasperi, che definì l’Assemblea “espressione della sovranità popolare”.
+        Venne eletto Presidente Giuseppe Saragat con 401 voti su 468. 
+        Si insediano i 556 deputati eletti a suffragio universale con il compito di scrivere
+        una nuova Costituzione basata su libertà, uguaglianza e democrazia.
+        L’Assemblea lavorò fino al 31 gennaio 1948 per scrivere la Costituzione della Repubblica Italiana.
+      </div>
+    </div>
+
+    <div class="event" onclick="toggle(this)">
+      <div class="date">1946–1947</div>
+      <div class="summary">Lavori della Commissione dei 75</div>
+      <div class="full">
+        Fu istituita dall’Assemblea Costituente il 15 luglio 1946 con il compito di elaborare il progetto della nuova Costituzione repubblicana. Presieduta da Meuccio Ruini,
+        era divisa in tre sottocommissioni: la prima sui diritti e doveri dei cittadini presieduta da Umberto Tupini, la seconda sull’ordinamento costituzionale dello Stato
+        presieduta da Umberto Terracini e la terza sui rapporti economici e sociali presieduta da Gustavo Ghidini. Un comitato di redazione, detto “dei 18”, coordinò i lavori delle sottocommissioni.
+        I lavori, che dovevano terminare entro il 20 ottobre 1946, si protrassero fino al 1° febbraio 1947. Il progetto fu poi discusso dall’Assemblea Costituente a partire dal 4 marzo 1947 e portato all’approvazione definitiva il 22 dicembre dello stesso anno.
+      </div>
+    </div>
+
+    <div class="event" onclick="toggle(this)">
+      <div class="date">1 gennaio 1948</div>
+      <div class="summary">Entrata in vigore della Costituzione</div>
+      <div class="full">
+        Entrò in vigore la Costituzione della Repubblica Italiana, legge fondamentale dello Stato che segnò il passaggio definitivo dall’ordinamento monarchico alla Repubblica democratica, parlamentare e laica.
+        Approvata dall’Assemblea Costituente il 22 dicembre 1947 e promulgata dal Capo provvisorio dello Stato Enrico De Nicola il 27 dicembre 1947, la Costituzione fu pubblicata lo stesso giorno in Gazzetta Ufficiale n. 298. Composta da 139 articoli e 18 disposizioni transitorie e finali,
+        è una costituzione scritta, rigida, lunga e programmatica che stabilisce i principi fondamentali, i diritti e doveri dei cittadini e l’ordinamento della Repubblica. Con la sua entrata in vigore l’Italia si diede un assetto istituzionale basato su Parlamento bicamerale,
+        Presidente della Repubblica e separazione dei poteri, superando definitivamente lo Statuto Albertino.
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="iotti">
+
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <img src="Foto edu/nilde iotti.jpg" alt="Nilde Iotti"
+         style="width: 70px; height: 70px; object-fit: cover; border-radius: 50%; border: 2px solid #34d399;">
+    <h2 style="margin: 0;">Nilde Iotti</h2>
+  </div>
+
+<p>
+    Nilde Iotti è stata una delle figure più significative della storia repubblicana italiana.
+    Eletta all’Assemblea Costituente nel 1946, contribuì in modo decisivo
+    all’inserimento dei principi di uguaglianza tra uomo e donna nella Costituzione.
+    La sua lunga carriera politica la portò a diventare la prima donna Presidente della Camera dei Deputati,
+    simbolo di impegno civile e rinnovamento democratico.
+  </p>
+
+
+  <span class="tag">Madre Costituente</span>
+
+<div class="grid">
+  <div class="card">
+    <h3>Articolo 29 – Famiglia e matrimonio</h3>
+    <a href="https://www.nascitacostituzione.it/02p1/02t2/029/index.htm?art029-011.htm&2"
+       target="_blank" style="color:#a7f3d0; text-decoration:underline;">
+      Leggi l'articolo completo
+    </a>
+  </div>
+
+  <div class="card">
+    <h3>Articolo 37 – Lavoro della donna e tutela dei minori</h3>
+    <a href="https://www.nascitacostituzione.it/02p1/03t3/037/index.htm?art037-999.htm&2"
+       target="_blank" style="color:#a7f3d0; text-decoration:underline;">
+      Leggi l'articolo completo
+    </a>
+  </div>
+</div>
+
+  <iframe class="video" 
+        src="https://www.youtube.com/embed/Xwx91Llofu4"
+        allowfullscreen>
+</iframe>
+
+</section>
+
+<section id="agenda">
+  <h2>Agenda 2030</h2>
+
+  <p>
+    Le battaglie delle Madri Costituenti del 1946 trovano continuità nelle sfide globali
+    dell’Agenda 2030. Questa timeline collega passato e presente, mostrando come i principi
+    della Costituzione vivano ancora oggi negli Obiettivi di Sviluppo Sostenibile.
+  </p>
+
+  <!-- TIMELINE MODERNA -->
+  <div class="modern-timeline">
+
+    <div class="t-item">
+      <div class="t-circle">1946</div>
+      <p class="t-text">Nascita della Repubblica e avvio dei lavori della Costituente.</p>
+    </div>
+
+    <div class="t-item">
+      <div class="t-circle">1947</div>
+      <p class="t-text">Nilde Iotti contribuisce agli articoli su famiglia, lavoro e uguaglianza.</p>
+    </div>
+
+    <div class="t-item">
+      <div class="t-circle">1979</div>
+      <p class="t-text">Prima donna Presidente della Camera: istituzioni solide e trasparenti.</p>
+    </div>
+
+    <div class="t-item">
+      <div class="t-circle">Oggi</div>
+      <p class="t-text">Sfide globali: parità di genere, lavoro dignitoso, democrazia digitale.</p>
+    </div>
+
+    <div class="t-item">
+      <div class="t-circle">2030</div>
+      <p class="t-text">Obiettivi ONU per uno sviluppo sostenibile e inclusivo.</p>
+    </div>
+
+  </div>
+
+  <!-- CARD DEGLI OBIETTIVI -->
+  <div class="grid">
+
+<div class="card">
+  <div class="goal-header">
+    <img src="Foto edu/obiettivo 5.jpg" alt="Obiettivo 5" class="goal-icon">
+    <h3>Obiettivo 5 – Parità di Genere</h3>
+  </div>
+  <p><strong>Il legame storico:</strong> Nilde Iotti fu tra le protagoniste della battaglia per il riconoscimento della piena cittadinanza femminile. Si impegnò per eliminare le discriminazioni che impedivano alle donne l’accesso a professioni come la Magistratura e per affermare un nuovo modello di famiglia basato sull’uguaglianza morale e giuridica dei coniugi. Il suo lavoro contribuì a trasformare la condizione femminile nella società italiana del dopoguerra.</p>
+  <p><strong>Oggi:</strong> Nilde Iotti fu tra le protagoniste della battaglia per il riconoscimento della piena cittadinanza femminile. Si impegnò per eliminare le discriminazioni che impedivano alle donne l’accesso a professioni come la Magistratura e per affermare un nuovo modello di famiglia basato sull’uguaglianza morale e giuridica dei coniugi. Il suo lavoro contribuì a trasformare la condizione femminile nella società italiana del dopoguerra.</p>
+</div>
+
+
+<div class="card">
+  <div class="goal-header">
+    <img src="Foto edu/obiettivo 8.jpg" alt="Obiettivo 8" class="goal-icon">
+    <h3>Obiettivo 8 – Lavoro Dignitoso</h3>
+  </div>
+  <p><strong>Il legame storico:</strong> Le Madri Costituenti, tra cui Iotti, difesero con forza l’Articolo 37, che sancisce la parità salariale e la tutela della maternità come valore sociale. In un’Italia ancora segnata da profonde disuguaglianze, questo articolo rappresentò una svolta: riconosceva la donna come lavoratrice a pieno titolo e non più come figura subordinata all’interno della famiglia.</p>
+  <p><strong>Oggi:</strong> Il mondo del lavoro affronta nuove sfide: precarietà giovanile, contratti flessibili che spesso non tutelano maternità e paternità, sicurezza sul lavoro e trasformazioni dovute all’automazione e all’intelligenza artificiale. Il lavoro dignitoso richiede equilibrio tra innovazione, diritti e inclusione.</p>
+</div>
+
+
+<div class="card">
+  <div class="goal-header">
+    <img src="Foto edu/obiettivo 16.jpg" alt="Obiettivo 16" class="goal-icon">
+    <h3>Obiettivo 16 – Istituzioni Solide</h3>
+  </div>
+  <p><strong>Il legame storico:</strong> La Costituzione nacque per garantire istituzioni democratiche solide dopo la dittatura fascista. Nilde Iotti, diventando la prima donna Presidente della Camera, rappresentò un modello di rigore, imparzialità e rispetto delle regole parlamentari. La sua figura contribuì a rafforzare la credibilità delle istituzioni repubblicane.</p>
+  <p><strong>Oggi:</strong> Le democrazie moderne devono affrontare minacce nuove: la disinformazione online, la polarizzazione, gli attacchi alla trasparenza e alla fiducia pubblica. Gli open data, la partecipazione civica digitale e l’educazione alla cittadinanza sono strumenti fondamentali per difendere istituzioni solide e inclusive.</p>
+</div>
+
+
+  </div>
+
+  <!-- PULSANTE ONU -->
+  <div style="text-align:center; margin-top:40px;">
+    <a href="https://unric.org/it/agenda-2030/" target="_blank"
+       class="onu-button">
+      Vai al sito ufficiale ONU
+    </a>
+  </div>
+
+</section>
+
+
+
+<footer>
+  <p>Progetto didattico - Costituzione e Agenda 2030</p>
+</footer>
+
+<script>
+function toggle(el) {
+  const full = el.querySelector('.full');
+  full.style.display = full.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+
+</body>
+</html>
